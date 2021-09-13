@@ -28,9 +28,24 @@ def predict():
     
 #We then get the output and render HTML of our prediction text whilch will be replaced through our index.html file
     output  = round(prediction[0],2)
-    
+ '''
     return render_template('index.html', prediction_text = 'Year five sales should be ${}'.format(output))
 
 #The main function runs the whole flask
 if __name__ == "__main__":
     app.run(debug=True)
+'''
+    
+ #Retrieve class name associated with predicted class
+    if prediction == 1:
+        output = 'backorder'
+    else:
+        output = 'not backorder'
+    
+#Create and send response to api caller
+    return jsonify(status='Comple', label = output)
+
+#The main function runs the whole flask
+if __name__ == "__main__":
+    app.run(debug=True)
+
